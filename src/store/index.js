@@ -17,9 +17,15 @@ export default new Vuex.Store({
   },
   actions: {
     async getPeople({ commit }) {
-      await axios.get('https://swapi.dev/api/people').then((res) => {
-        commit('setPeople', res.data.results);
+      let ppl = await axios.get('https://swapi.dev/api/people').then((res) => {
+        return res.data.results;
       });
+      await ppl.forEach(person => {
+         axios.get(person.homeworld).then(hw => {
+          person.homeworld = hw.data;
+        })
+      })
+      commit('setPeople', ppl)
     },
   },
   modules: {},

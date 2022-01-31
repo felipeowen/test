@@ -4,14 +4,31 @@
       <v-col v-for="(person, index) in people" :key="index" class="pa-2" md="3">
         <v-card>
           <v-card-title class="text-h5"> {{ person.name }}</v-card-title>
-          <v-list>
-            <v-list-item>
-              <v-list-item-title>Birth Year</v-list-item-title>
-              <v-list-item-subtitle class="text-right">
-                {{ person.birth_year }}
-              </v-list-item-subtitle>
-            </v-list-item>
-          </v-list>
+
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="person.birth_year"
+                  label="Born"
+                  outlined
+                  readonly
+                  filled
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="person.homeworld.name"
+                  label="Born"
+                  outlined
+                ></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-card>
       </v-col>
     </v-row>
@@ -23,11 +40,6 @@ export default {
   computed: {
     people() {
       return this.$store.state.people;
-    },
-  },
-  methods: {
-    species(species) {
-      return species.length === 0 ? 'N/A' : species[0];
     },
   },
   mounted() {

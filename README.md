@@ -1,4 +1,4 @@
-# curatetest
+# test
 
 instructions:
 ```
@@ -6,4 +6,4 @@ instructions:
 2. npm run serve
 ```
 
-to test editing data, change homeworld with vue devtools open. you should see the vals in vuex change
+to test editing data, navigate to /people and change homeworld with vue devtools open. you should see the vals in vuex change

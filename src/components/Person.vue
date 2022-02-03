@@ -20,7 +20,7 @@
           <v-text-field
             :value="homeworld"
             @input="inputHandler(index, $event)"
-            label="Born"
+            label="Homeworld"
             outlined
           ></v-text-field>
         </v-col>

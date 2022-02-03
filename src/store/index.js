@@ -14,6 +14,9 @@ export default new Vuex.Store({
     setPeople(state, val) {
       state.people = val;
     },
+    setHomeworld(state, payload) {
+      state.people[payload.index]['homeworld'].name = payload.val;
+    },
   },
   actions: {
     async getPeople({ commit }) {
@@ -22,11 +25,14 @@ export default new Vuex.Store({
       });
       await ppl.forEach(person => {
          axios.get(person.homeworld).then(hw => {
-          person.homeworld = hw.data;
+          Vue.set(person, 'homeworld', hw.data);
         })
       })
       commit('setPeople', ppl)
     },
+    updateHomeworld({ commit }, payload) {
+      commit('setHomeworld', payload)
+    }
   },
   modules: {},
 });
